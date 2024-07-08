@@ -43,6 +43,14 @@ func (m *MockStore) GetTask(id string) (*Task, error) {
 	return nil, errors.New("Task does not exist")
 }
 
+func (m *MockStore) CreateProject(project *Project) (*Project, error) {
+	return &Project{}, nil
+}
+
+func (m *MockStore) GetProjectById(id string) (*Project, error) {
+	return &Project{}, nil
+}
+
 func MockJWTAuth(handler http.HandlerFunc, store Store) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		authHeader := r.Header.Get("Authorization")

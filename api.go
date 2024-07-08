@@ -25,6 +25,7 @@ func (s *APIServer) Serve() {
 
 	NewUserService(s.store).RegisterRoutes(subrouter)
 	NewTasksRoutes(s.store, WithJJWTAuth).RegisterRoutes(subrouter)
+	NewProjectService(s.store).RegisterRoutes(subrouter)
 
 	log.Print("Server listening at ", s.add)
 

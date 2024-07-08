@@ -41,15 +41,15 @@ func (s *UserService) handleCreateUser(w http.ResponseWriter, r *http.Request) {
 
 	defer r.Body.Close()
 
-	var payload *User
-	err = json.Unmarshal(body, &payload)
+	payload := &User{}
+	err = json.Unmarshal(body, payload)
 	if err != nil {
 		WriteJson(w, http.StatusBadRequest, ErrorResponse{Error: "Invalid requst Payload!"})
 		return
 	}
 
 	if err := validateUserPayload(payload); err != nil {
-		WriteJson(w, http.StatusBadRequest, ErrorResponse{Error: "Invalid requst Payload!"})
+		WriteJson(w, http.StatusBadRequest, ErrorResponse{Error: err.Error()})
 		return
 	}
 

@@ -25,3 +25,9 @@ type User struct {
 	Password  string    `json:"password"`
 	ID        int64     `json:"id"`
 }
+
+type Project struct {
+	CreatedAt time.Time `json:"createdAt"`
+	Name      string    `json:"name"`
+	ID        int64     `json:"id"`
+}

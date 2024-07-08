@@ -42,7 +42,7 @@ func (s *TaskService) handleCreateTask(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
 	var task *Task
-	err = json.Unmarshal(body, &task)
+	err = json.Unmarshal(body, task)
 	if err != nil {
 		WriteJson(w, http.StatusBadRequest, ErrorResponse{Error: "Invalid requst Payload!"})
 		return
