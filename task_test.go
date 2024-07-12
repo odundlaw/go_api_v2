@@ -12,10 +12,8 @@ import (
 
 func TestCreateTask(t *testing.T) {
 	ms := NewMockStore()
-	service := NewTasksRoutes(ms, MockJWTAuth)
-
 	router := mux.NewRouter()
-	service.RegisterRoutes(router)
+	NewTasksRoutes(ms, MockJWTAuth).RegisterRoutes(router)
 
 	t.Run("should return an error if name is empty", func(t *testing.T) {
 		payload := &Task{

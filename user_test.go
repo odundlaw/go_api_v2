@@ -13,10 +13,8 @@ import (
 
 func TestCreateUser(t *testing.T) {
 	ms := NewMockStore()
-	service := NewUserService(ms)
-
 	router := mux.NewRouter()
-	service.RegisterRoutes(router)
+	NewUserService(ms).RegisterRoutes(router)
 
 	t.Run("it should return an error if payload is invalid", func(t *testing.T) {
 		payload := &User{
